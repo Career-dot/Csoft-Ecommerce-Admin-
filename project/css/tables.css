@@ -1,0 +1,239 @@
+.table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.table-tabs {
+    display: flex;
+    background: var(--secondary);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 2px;
+    flex-wrap: wrap;
+}
+
+.table-tabs button {
+    padding: 8px 16px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-light);
+    border-radius: var(--radius-pill);
+    transition: all .18s ease;
+}
+
+.table-tabs button.active {
+    background: var(--white);
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.table-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--secondary);
+    padding: 9px 14px;
+    border-radius: 10px;
+    min-width: 220px;
+}
+
+.table-search svg {
+    width: 15px;
+    height: 15px;
+    color: var(--text-light);
+}
+
+.table-search input {
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    width: 100%;
+}
+
+.table-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.table-filters select {
+    padding: 9px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text);
+    background: var(--white);
+}
+
+/* Table itself  */
+
+.table-scroll {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 640px;
+}
+
+.data-table thead th {
+    text-align: left;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--text-light);
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+}
+
+.data-table thead th .sort-arrow {
+    margin-left: 4px;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.data-table tbody td {
+    padding: 14px;
+    font-size: 13.2px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: background .15s ease;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.cell-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cell-product img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--secondary);
+}
+
+.cell-product .cell-title {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.cell-product .cell-sub {
+    font-size: 11.5px;
+    color: var(--text-light);
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.row-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.row-actions button {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    transition: all .15s ease;
+}
+
+.row-actions button svg {
+    width: 14px;
+    height: 14px;
+}
+
+.row-actions button:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.row-actions button.delete-btn:hover {
+    background: var(--danger);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-light);
+    font-size: 13.5px;
+}
+
+/*  Pagination  */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+    font-size: 12.5px;
+    color: var(--text-light);
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pagination-buttons button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--secondary);
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.pagination-buttons button.active {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.pagination-buttons button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.pagination-buttons button:hover:not(:disabled):not(.active) {
+    background: var(--border);
+}

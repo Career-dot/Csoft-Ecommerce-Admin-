@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSOFT | Dashboard</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/topbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/tables.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="dashboard" data-title="Overview" data-path="pages">
+
+<div id="toast-container"></div>
+<div class="sidebar-overlay" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+<div class="app-shell">
+
+    <!-- Sidebar gets injected here by sidebar.js -->
+    <aside class="sidebar" id="sidebar-mount"></aside>
+
+    <div class="main-content">
+
+        <!-- Topbar gets injected here by sidebar.js -->
+        <header class="topbar" id="topbar-mount"></header>
+
+        <main class="page-content">
+
+            <!--STAT CARD-->
+            <section class="stat-cards">
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <span class="stat-trend up pink">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            +20.1%
+                        </span>
+                    </div>
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value" id="stat-revenue">$0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        </div>
+                        <span class="stat-trend up blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            +12.5%
+                        </span>
+                    </div>
+                    <div class="stat-label">Total Orders</div>
+                    <div class="stat-value" id="stat-orders">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                        </div>
+                        <span class="stat-trend up yellow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            +8.2%
+                        </span>
+                    </div>
+                    <div class="stat-label">Total Products</div>
+                    <div class="stat-value" id="stat-products">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card-top">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <span class="stat-trend up blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            +2.4%
+                        </span>
+                    </div>
+                    <div class="stat-label">Total Customers</div>
+                    <div class="stat-value" id="stat-customers">0</div>
+                </div>
+
+            </section>
+
+            <!-- REVENUE CHART + TRAFFIC-->
+            <section class="dashboard-row uneven">
+
+                <div class="card">
+                    <div class="card-header wrap">
+                        <div class="card-header-title">
+                            <span class="icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            </span>
+                            Revenue &amp; Performance
+                        </div>
+                        <div class="tab-toggle">
+                            <button class="active">Revenue</button>
+                            <button>Orders</button>
+                            <button>Customers</button>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <span><span class="legend-dot" style="background:#6C5CE7;"></span>One-time Revenue</span>
+                        <span><span class="legend-dot" style="background:#D9D4FF;"></span>Recurring Revenue</span>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">
+                            <span class="icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            </span>
+                            Traffic Sources
+                        </div>
+                        <a href="#" class="see-all-link">See All</a>
+                    </div>
+                    <div class="donut-wrap chart-box small">
+                        <canvas id="trafficChart"></canvas>
+                        <div class="donut-center">
+                            <div class="donut-label">Total Sales</div>
+                            <div class="donut-value">$134,980</div>
+                        </div>
+                    </div>
+                    <div class="traffic-list">
+                        <div class="traffic-row">
+                            <span class="traffic-label"><span class="legend-dot" style="background:#2ECC71;"></span>Organic Search</span>
+                            <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:42%;background:#2ECC71;"></div></div>
+                            <span class="traffic-percent">42%</span>
+                        </div>
+                        <div class="traffic-row">
+                            <span class="traffic-label"><span class="legend-dot" style="background:#6C5CE7;"></span>Social Media</span>
+                            <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:30%;background:#6C5CE7;"></div></div>
+                            <span class="traffic-percent">30%</span>
+                        </div>
+                        <div class="traffic-row">
+                            <span class="traffic-label"><span class="legend-dot" style="background:#E84393;"></span>Direct</span>
+                            <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:66%;background:#E84393;"></div></div>
+                            <span class="traffic-percent">66%</span>
+                        </div>
+                        <div class="traffic-row">
+                            <span class="traffic-label"><span class="legend-dot" style="background:#F39C12;"></span>Email</span>
+                            <div class="traffic-bar-track"><div class="traffic-bar-fill" style="width:78%;background:#F39C12;"></div></div>
+                            <span class="traffic-percent">78%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===================== ORDER HISTORY + TRENDING ===================== -->
+            <section class="dashboard-row uneven">
+
+                <div class="card">
+                    <div class="card-header wrap">
+                        <div class="card-header-title">Order History</div>
+                        <div class="flex gap-12 flex-wrap">
+                            <div class="table-tabs" id="order-history-tabs">
+                                <button class="active" data-filter="All">All Orders</button>
+                                <button data-filter="Completed">Completed</button>
+                                <button data-filter="In Progress">In Progress</button>
+                                <button data-filter="Cancelled">Cancelled</button>
+                            </div>
+                            <button class="filter-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                                Filter
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>Order ID</th>
+                                    <th>Products</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="order-history-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">
+                            <span class="icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+                            </span>
+                            Trending Now
+                        </div>
+                        <button class="filter-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                            Filter
+                        </button>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Sales</th>
+                                    <th>Earnings</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trending-products-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ===================== RECENT ACTIVITY + QUICK ACTIONS ===================== -->
+            <section class="dashboard-row uneven">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">Recent Activity</div>
+                    </div>
+                    <div id="recent-activity-list"></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">Quick Actions</div>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="add-product.html" class="quick-action-item">
+                            <span class="stat-icon icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+                            Add Product
+                        </a>
+                        <a href="orders.html" class="quick-action-item">
+                            <span class="stat-icon icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path></svg></span>
+                            View Orders
+                        </a>
+                        <a href="discounts.html" class="quick-action-item">
+                            <span class="stat-icon icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m20.59 13.41-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82Z"></path></svg></span>
+                            Create Coupon
+                        </a>
+                        <a href="reports.html" class="quick-action-item">
+                            <span class="stat-icon icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>
+                            View Reports
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

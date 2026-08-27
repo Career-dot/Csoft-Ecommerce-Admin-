@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSOFT | Settings</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/topbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="settings" data-title="Settings" data-path="pages">
+
+<div id="toast-container"></div>
+<div class="sidebar-overlay" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar-mount"></aside>
+
+    <div class="main-content">
+        <header class="topbar" id="topbar-mount"></header>
+
+        <main class="page-content">
+
+            <div>
+                <h2 class="page-title">Settings</h2>
+                <p class="text-muted">Manage your profile and store preferences</p>
+            </div>
+
+            <div class="dashboard-row uneven">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">Profile Information</div>
+                    </div>
+
+                    <div class="form-success-msg" id="settings-success">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        Settings saved successfully!
+                    </div>
+
+                    <form id="settings-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="settings-name">Full Name</label>
+                                <input type="text" id="settings-name" value="Ryan Bennett">
+                            </div>
+                            <div class="form-group">
+                                <label for="settings-email">Email Address</label>
+                                <input type="email" id="settings-email" value="ryan@CSOFT.com">
+                                <span class="field-error" id="settings-email-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="settings-store">Store Name</label>
+                                <input type="text" id="settings-store" value="CSOFT">
+                            </div>
+                            <div class="form-group">
+                                <label for="settings-currency">Currency</label>
+                                <select id="settings-currency">
+                                    <option value="USD" selected>USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="PKR">PKR - Pakistani Rupee</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">Notification Preferences</div>
+                    </div>
+                    <div class="flex-between" style="padding:12px 0;border-bottom:1px solid var(--border);">
+                        <div>
+                            <p style="font-weight:600;font-size:13.5px;">Order Notifications</p>
+                            <p class="text-muted" style="font-size:12px;">Get notified about new orders</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="flex-between" style="padding:12px 0;border-bottom:1px solid var(--border);">
+                        <div>
+                            <p style="font-weight:600;font-size:13.5px;">Low Stock Alerts</p>
+                            <p class="text-muted" style="font-size:12px;">Get notified when stock is low</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                    <div class="flex-between" style="padding:12px 0;">
+                        <div>
+                            <p style="font-weight:600;font-size:13.5px;">Marketing Emails</p>
+                            <p class="text-muted" style="font-size:12px;">Receive tips and product news</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="switch-track"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/validation.js"></script>
+<script>
+    /* Small page-specific script kept inline since it only
+       handles this one simple form (no dedicated file needed
+       for such a small amount of logic). */
+    document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("settings-form");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var validEmail = true;
+            var emailInput = document.getElementById("settings-email");
+            var emailError = document.getElementById("settings-email-error");
+            if (!isValidEmail(emailInput.value)) {
+                validEmail = setFieldError(emailInput, emailError, "Enter a valid email address.");
+            } else {
+                validEmail = setFieldError(emailInput, emailError, "");
+            }
+
+            if (!validEmail) return;
+
+            document.getElementById("settings-success").classList.add("show");
+            showToast("Settings saved successfully!");
+        });
+    });
+</script>
+</body>
+</html>

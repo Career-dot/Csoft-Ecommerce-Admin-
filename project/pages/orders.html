@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSOFT | Orders</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/topbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/tables.css">
+<link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="orders" data-title="Orders" data-path="pages">
+
+<div id="toast-container"></div>
+<div class="sidebar-overlay" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar-mount"></aside>
+
+    <div class="main-content">
+        <header class="topbar" id="topbar-mount"></header>
+
+        <main class="page-content">
+
+            <div>
+                <h2 class="page-title">Orders</h2>
+                <p class="text-muted">Track and manage customer orders</p>
+            </div>
+
+            <div class="card">
+                <div class="table-toolbar">
+                    <div class="table-tabs" id="orders-status-tabs">
+                        <button class="active" data-status="All">All</button>
+                        <button data-status="Pending">Pending</button>
+                        <button data-status="In Progress">In Progress</button>
+                        <button data-status="Completed">Completed</button>
+                        <button data-status="Cancelled">Cancelled</button>
+                    </div>
+                    <div class="table-search">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="text" id="order-search" placeholder="Search order ID, customer...">
+                    </div>
+                </div>
+
+                <div class="table-scroll">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <span id="orders-pagination-info"></span>
+                    <div class="pagination-buttons" id="orders-pagination-buttons"></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<!--  VIEW ORDER MODAL  -->
+<div class="modal-overlay" id="view-order-modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Order Details</h3>
+            <button class="modal-close" onclick="closeModal('view-order-modal')">&times;</button>
+        </div>
+        <div id="view-order-body"></div>
+    </div>
+</div>
+
+<!--UPDATE STATUS MODAL-->
+<div class="modal-overlay" id="update-status-modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Update Order Status</h3>
+            <button class="modal-close" onclick="closeModal('update-status-modal')">&times;</button>
+        </div>
+        <form id="update-status-form">
+            <input type="hidden" id="update-order-id">
+            <div class="form-group full-width">
+                <label for="update-status-select">Status</label>
+                <select id="update-status-select">
+                    <option>Pending</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                    <option>Cancelled</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('update-status-modal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Status</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/validation.js"></script>
+<script src="../js/orders.js"></script>
+</body>
+</html>

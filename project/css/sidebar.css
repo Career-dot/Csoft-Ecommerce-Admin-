@@ -1,0 +1,274 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 18px;
+    z-index: 100;
+    transition: width .25s ease, transform .25s ease;
+    overflow-y: auto;
+}
+
+body.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed);
+    padding: 24px 12px;
+}
+
+/* ---------- Logo ---------- */
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 6px 24px;
+}
+
+.sidebar-logo-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--white);
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-logo-text h1 {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+}
+
+.sidebar-logo-text p {
+    font-size: 11.5px;
+    color: var(--text-light);
+}
+
+body.sidebar-collapsed .sidebar-logo-text {
+    display: none;
+}
+
+/* ---------- Menu ---------- */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.menu-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--text-muted);
+    margin: 16px 10px 6px;
+}
+
+body.sidebar-collapsed .menu-label {
+    display: none;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    color: var(--text-light);
+    font-size: 13.8px;
+    font-weight: 500;
+    transition: background .15s ease, color .15s ease;
+    position: relative;
+}
+
+.menu-item:hover {
+    background: var(--secondary);
+    color: var(--text);
+}
+
+.menu-item.active {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: var(--white);
+    box-shadow: 0 8px 16px rgba(108, 92, 231, .28);
+}
+
+.menu-item .menu-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item .menu-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-item span.menu-text {
+    flex: 1;
+    white-space: nowrap;
+}
+
+body.sidebar-collapsed .menu-text,
+body.sidebar-collapsed .menu-chevron,
+body.sidebar-collapsed .menu-label {
+    display: none;
+}
+
+.menu-chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform .2s ease;
+}
+
+.has-submenu.open > .menu-item .menu-chevron {
+    transform: rotate(90deg);
+}
+
+/* ---------- Submenu ---------- */
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    transition: max-height .25s ease;
+}
+
+.has-submenu.open .submenu {
+    max-height: 220px;
+}
+
+.submenu-item {
+    padding: 9px 10px;
+    font-size: 13.2px;
+    color: var(--text-light);
+    border-radius: 8px;
+    transition: color .15s ease, background .15s ease;
+}
+
+.submenu-item:hover {
+    color: var(--primary);
+    background: var(--secondary);
+}
+
+.submenu-item.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+body.sidebar-collapsed .submenu {
+    display: none;
+}
+
+/* ---------- Bottom section: settings / help / upgrade ---------- */
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.upgrade-card {
+    margin-top: 16px;
+    background: linear-gradient(160deg, var(--primary-light), var(--primary-dark));
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.upgrade-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, .12);
+    border-radius: 50%;
+    top: -30px;
+    right: -30px;
+}
+
+.upgrade-card h4 {
+    font-size: 13.5px;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.upgrade-card p {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, .85);
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.upgrade-card button {
+    width: 100%;
+    background: var(--white);
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 9px;
+    border-radius: 9px;
+    transition: opacity .15s ease;
+}
+
+.upgrade-card button:hover {
+    opacity: .9;
+}
+
+body.sidebar-collapsed .upgrade-card {
+    display: none;
+}
+
+/* ---------- Country selector ---------- */
+
+.country-select {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.country-select .flag {
+    font-size: 16px;
+}
+
+body.sidebar-collapsed .country-select span:not(.flag) {
+    display: none;
+}
+
+/* ---------- Mobile hamburger ---------- */
+
+.sidebar-toggle-btn {
+    display: none;
+}
+
+/* ---------- Mobile overlay ---------- */
+
+.sidebar-overlay {
+    display: none;
+}

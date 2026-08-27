@@ -1,0 +1,134 @@
+/*  Laptop (below 1200px): tighten dashboard split  */
+@media (max-width: 1200px) {
+    .dashboard-row.uneven {
+        flex-direction: column;
+    }
+
+    .stat-card {
+        flex: 1 1 45%;
+    }
+}
+
+/*  Tablet (below 992px): collapse sidebar by default */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px;
+        box-shadow: var(--shadow);
+    }
+
+    body.sidebar-open .sidebar {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    .sidebar-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: var(--secondary);
+    }
+
+    .sidebar-toggle-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(34, 34, 59, .4);
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .2s ease;
+    }
+
+    body.sidebar-open .sidebar-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .topbar-search {
+        width: 220px;
+    }
+
+    .kbd-hint {
+        display: none;
+    }
+}
+
+/*  Small tablet / large phone (below 768px)  */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 20px 16px 40px;
+    }
+
+    .topbar {
+        padding: 0 16px;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
+
+    .topbar-search {
+        width: 160px;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .dashboard-row {
+        flex-direction: column;
+    }
+
+    .stat-cards {
+        gap: 14px;
+    }
+
+    .stat-card {
+        flex: 1 1 100%;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .table-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-search {
+        width: 100%;
+    }
+}
+
+/*  Mobile (below 480px)  */
+@media (max-width: 480px) {
+    .topbar-search {
+        display: none;
+    }
+
+    .form-group {
+        flex: 1 1 100%;
+    }
+
+    .pagination {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-box {
+        padding: 18px;
+    }
+}

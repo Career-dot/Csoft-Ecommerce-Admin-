@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSOFT | Sales Reports</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="../css/topbar.css">
+<link rel="stylesheet" href="../css/cards.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+<link rel="stylesheet" href="../css/responsive.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="reports" data-title="Sales Reports" data-path="pages">
+
+<div id="toast-container"></div>
+<div class="sidebar-overlay" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+<div class="app-shell">
+    <aside class="sidebar" id="sidebar-mount"></aside>
+
+    <div class="main-content">
+        <header class="topbar" id="topbar-mount"></header>
+
+        <main class="page-content">
+
+            <div class="flex-between flex-wrap gap-16">
+                <div>
+                    <h2 class="page-title">Sales Reports</h2>
+                    <p class="text-muted">Analyze your store's performance over time</p>
+                </div>
+                <button class="btn btn-primary" id="export-report-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Export Report
+                </button>
+            </div>
+
+            <section class="stat-cards">
+                <div class="stat-card">
+                    <div class="stat-label">Total Revenue</div>
+                    <div class="stat-value" id="report-total-revenue">$0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Orders</div>
+                    <div class="stat-value" id="report-total-orders">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg. Order Value</div>
+                    <div class="stat-value" id="report-avg-order">$0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Completion Rate</div>
+                    <div class="stat-value" id="report-completed-rate">0%</div>
+                </div>
+            </section>
+
+            <div class="card">
+                <div class="card-header wrap">
+                    <div class="card-header-title">Revenue Over Time</div>
+                    <div class="tab-toggle" id="report-range-tabs">
+                        <button data-range="daily">Daily</button>
+                        <button data-range="weekly">Weekly</button>
+                        <button class="active" data-range="monthly">Monthly</button>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/reports.js"></script>
+</body>
+</html>
